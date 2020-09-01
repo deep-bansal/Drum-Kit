@@ -53,11 +53,22 @@ function handleClick()
 {
     let key= this.innerHTML;
     playSound(key);  
+    addAnim(key);
 
+}
+
+function addAnim(currentKey){
+	var activeButton = document.querySelector("." + currentKey);
+
+	activeButton.classList.add("pressed");
+	setTimeout(function(){
+		activeButton.classList.remove("pressed");
+	},100);
 }
 
 
 window.addEventListener('keypress',function(event){
     let key = String.fromCharCode(event.keyCode);
     playSound(key);
+    addAnim(key);
 });
